@@ -1,0 +1,22 @@
+---
+- name: install httpd
+  hosts: all
+  become: yes
+  
+  tasks:
+  - name: ensure the server is installed
+  yum:
+    name: httpd
+    state: present
+    
+  - name: start httpd
+  service:
+    name: httpd
+    state: started
+    
+  - name: enable the httpd
+  service:
+    name: httpd
+    enabled: yes
+...
+  
